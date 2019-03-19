@@ -13,10 +13,24 @@ p {
 }
 
 .section-content {
+  z-index: 1111111;
   text-align: center;
   color: #fff;
 }
 
+#section1 img {
+  width: 100%;
+  height: 100%;
+  left:  0;
+  top: 0;
+  z-index: -1;
+  filter: brightness(.6);
+  position:  absolute;
+    /* background-image: url('../img/_1nnKIE2KtY.jpg'); */
+}
+/* #section {
+  background-color: #;
+} */
 #section1 {
   background-image: url('../img/_1nnKIE2KtY.jpg');
 }
@@ -161,29 +175,96 @@ Home Slider
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.swiper-image-one {
-  background-image: url(https://source.unsplash.com/GXOGGENgHnQ/1600x900);
+
+nav {
+  width: 100%;
+  margin-top: 50px;
+  font-weight: 600;
+  left: 0px;
+  text-align: center;
 }
 
-.swiper-image-two {
-  background-image: url(https://source.unsplash.com/Jy6luiLBsrk/1600x900);
+nav a {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  margin: 0 15px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
 }
 
-.swiper-image-three {
-  background-image: url(https://source.unsplash.com/sFLVTqNzG2I/1600x900);
+nav a:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  top: 99%;
+  animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
 }
 
-.swiper-image-four {
-  background-image: url(https://source.unsplash.com/pj1jt4vBGZY/1600x900);
+nav a:hover:before {
+  animation: in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
 }
 
-.swiper-image-five {
-  background-image: url(https://source.unsplash.com/Jy6luiLBsrk/1600x900);
+@keyframes in {
+  0% {
+    width: 0;
+    left: 0;
+    right: auto;
+  }
+  100% {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
+@keyframes out {
+  0% {
+    width: 100%;
+    left: auto;
+    right: 0;
+  }
+  100% {
+    width: 0;
+    left: auto;
+    right: 0;
+  }
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+nav a:nth-child(1) {
+  animation: show 0.2s 1.1s ease 1 both;
 }
 
-.swiper-image-six {
-  background-image: url(https://source.unsplash.com/bxCgan0J1Sg/1600x900);
+nav a:nth-child(2) {
+  animation: show 0.2s 1.2s ease 1 both;
 }
+
+nav a:nth-child(3) {
+  animation: show 0.2s 1.3s ease 1 both;
+}
+
+nav a:nth-child(4) {
+  animation: show 0.2s 1.4s ease 1 both;
+}
+
+nav a:nth-child(5) {
+  animation: show 0.2s 1.5s ease 1 both;
+}
+
 
 .swiper-image {
   width: 50%;
@@ -222,7 +303,7 @@ Home Slider
   background-color: hsla(0, 0%, 0%, 0.5);
   background-blend-mode: multiply;
 }
-h1 {
+.swiper-image-inner h1 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
   color: #fff;
@@ -235,7 +316,7 @@ h1 {
           transform: translate3d(-20%, 0, 0);
   opacity: 0;
 }
-h1 span.emphasis {
+.swiper-image-inner h1 span.emphasis {
   font-weight: 700;
   font-style: italic;
   opacity: 0;
@@ -244,10 +325,10 @@ h1 span.emphasis {
           transform: translate3d(-20%, 0, 0);
   display: inline-block;
 }
-h1 span:not(.emphasis) {
+.swiper-image-inner h1 span:not(.emphasis) {
   font-size: 3.5rem;
 }
-h1 + p {
+.swiper-image-inner h1 + p {
   font-family: 'Cormorand SC';
   font-size: 14px;
   letter-spacing: 2px;
@@ -264,7 +345,7 @@ h1 + p {
   color: #fff;
   padding-right: 8rem;
 }
-p.paragraph {
+.swiper-image-inner p.paragraph {
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
   color: #fff;
@@ -335,21 +416,254 @@ p.paragraph {
   }
 }
 
-/* Swiper css file. Only thing changed down here is the pagination styling */
-/**
- * Swiper 3.4.1
- * Most modern mobile touch slider and framework with hardware accelerated transitions
- *
- * http://www.idangero.us/swiper/
- *
- * Copyright 2016, Vladimir Kharlampidi
- * The iDangero.us
- * http://www.idangero.us/
- *
- * Licensed under MIT
- *
- * Released on: December 13, 2016
- */
+
+
+/*-- contact-section --*/
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  display: flex;
+  margin-left: auto;
+}
+
+.column{
+  position: relative;
+  min-height: 1px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+
+.contact{
+	  display:  none;
+	  padding: 0em 0em;
+	  overflow: hidden;
+}
+.contact h3{
+  font-size: 2.5em;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin: 0 auto;
+  border-bottom: 2px solid white;
+  width: 220px;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.contact p{
+	font-size:1.2em;
+	font-weight:400;
+	color: #ff6f5c;
+	margin:1em 0em 4em;
+	text-align:center;
+}
+.contact form input[type="text"]{
+	  width: 100%;
+  padding: 1.5% 0;
+  margin-bottom: 7%;
+  background: none;
+  color: #FFFFFF;
+  font-size: 18px;
+  outline: none;
+  font-weight: 400;
+  text-indent: 10px;
+  border: 1px solid #FFFFFF;
+  border-radius: 3px;
+}
+.contact form textarea {
+	resize:none;
+	width: 100%;
+	padding: 2% 0;
+	margin-bottom: 5%;
+	background:none;
+	color: #FFFFFF;
+	font-size:18px;
+	outline: none;
+	font-weight:400;
+	text-indent: 10px;
+	border: 1px solid #FFFFFF;
+	min-height: 205px;
+	border-radius: 3px;
+}
+.contact form input[type="submit"] {
+	background: #ff6f5c;
+	padding: 0.5em 3em;
+	color:#fff;
+	font-size: 19px;
+	font-weight: 400;
+	display: block;
+	outline: none;
+	border: none;
+	border-radius:5px;
+	text-transform:uppercase;
+	font-family: 'Open Sans';
+	font-weight: bold;
+	cursor: pointer;
+	float: right;
+}
+.contact form input[type="submit"]:hover{
+  background: #FFFFFF;
+  color: #000;
+}
+
+/* contact 2*/
+
+.contact2{
+	  display:  none;
+	  padding: 0em 0em;
+	  overflow: hidden;
+}
+.contact2 h3{
+  font-size: 2.5em;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin: 0 auto;
+  border-bottom: 2px solid white;
+  width: 220px;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.contact2 p{
+	font-size:1.2em;
+	font-weight:400;
+	color: #ff6f5c;
+	margin:1em 0em 4em;
+	text-align:center;
+}
+.contact2 form input[type="text"]{
+	  width: 100%;
+  padding: 1.5% 0;
+  margin-bottom: 7%;
+  background: none;
+  color: #FFFFFF;
+  font-size: 18px;
+  outline: none;
+  font-weight: 400;
+  text-indent: 10px;
+  border: 1px solid #FFFFFF;
+  border-radius: 3px;
+}
+.contact2 form textarea {
+	resize:none;
+	width: 100%;
+	padding: 2% 0;
+	margin-bottom: 5%;
+	background:none;
+	color: #FFFFFF;
+	font-size:18px;
+	outline: none;
+	font-weight:400;
+	text-indent: 10px;
+	border: 1px solid #FFFFFF;
+	min-height: 205px;
+	border-radius: 3px;
+}
+.button {
+	background: #ff6f5c;
+	padding: 0.5em 0.5em;
+  margin: 0 10px;
+	color:#fff;
+	font-size: 19px;
+	font-weight: 400;
+	display: block;
+	outline: none;
+	border: none;
+	border-radius:5px;
+	text-transform:uppercase;
+	font-family: 'Open Sans';
+	font-weight: bold;
+	cursor: pointer;
+	float: right;
+}
+.button:hover{
+  background: #FFFFFF;
+  color: #000;
+}
+
+
+
+/*-- contact --*/
+
+
+
+
+.box h3{
+  font-size: 2.5em;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin: 0 auto;
+  border-bottom: 2px solid white;
+  width: 220px;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.box p{
+	font-size:1.2em;
+	font-weight:400;
+	color: #ff6f5c;
+	margin:1em 0em 4em;
+	text-align:center;
+}
+.box form input[type="password"]{
+	  width: 500px;
+	  padding: 1.5% 0;
+	  margin-bottom: 20px;
+	  background: none;
+	  color: #000000;
+	  font-size: 18px;
+	  outline: none;
+	  font-weight: 400;
+	  text-indent: 10px;
+	  border: 1px solid #000000;
+	  border-radius: 3px;
+}
+.box form input[type="text"]{
+	  width: 500px;
+	  padding: 1.5% 0;
+	  margin-bottom: 20px;
+	  background: none;
+	  color: #000000;
+	  font-size: 18px;
+	  outline: none;
+	  font-weight: 400;
+	  text-indent: 10px;
+	  border: 1px solid #000000;
+	  border-radius: 3px;
+}
+.box form textarea {
+	resize:none;
+	width: 100%;
+	padding: 2% 0;
+	margin-bottom: 5%;
+	background:none;
+	color: #FFFFFF;
+	font-size:18px;
+	outline: none;
+	font-weight:400;
+	text-indent: 10px;
+	border: 1px solid #FFFFFF;
+	min-height: 205px;
+	border-radius: 3px;
+}
+
+
 .swiper-container {
   margin-left: auto;
   margin-right: auto;
@@ -842,6 +1156,17 @@ button.swiper-pagination-bullet {
   border-width: 5px;
   width:80%;
   margin-left:10%;
+  font-size: 1.5em;
+}
+.box H1{
+  margin-top: 15px;
+  font-size: 2em;
+}
+.box nav a i{
+  font-size: 5em;
+}
+.box nav a{
+  cursor: pointer;
 }
 
 /*SMALL DEVICES*/

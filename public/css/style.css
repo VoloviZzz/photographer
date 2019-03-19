@@ -2,6 +2,10 @@ body {
   font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
 
+.fp-viewing-0{ height: unset !important}
+.fp-viewing-1{ height: unset !important}
+.fp-viewing-2{ height: unset !important}
+.fp-viewing-3{ height: unset !important}
 
 p {
   margin: 0;
@@ -26,7 +30,10 @@ p {
   z-index: -1;
   filter: brightness(.6);
   position:  absolute;
-  /*   background-image: url('../img/_1nnKIE2KtY.jpg'); */
+    /* background-image: url('../img/_1nnKIE2KtY.jpg'); */
+}
+#section1 {
+  background-image: url('../img/_1nnKIE2KtY.jpg');
 }
 
 #section2 {

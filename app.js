@@ -31,12 +31,14 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
 
-
-app.use('/', (request, response) => {
+app.get('/', (request, response) => {
   connection.query('SELECT * from pages', (err1, rows1, fields1) => {
     if (err1) throw err1;
     connection.query('SELECT * from images', (err, rows, fields) => {
@@ -49,9 +51,67 @@ app.use('/', (request, response) => {
       });
     });
   });
-  // connection.end();
 });
-app.use('/users', usersRouter);
+
+app.get('/admin', (request, response) => {
+  connection.query('SELECT * from pages', (err1, rows1, fields1) => {
+    if (err1) throw err1;
+    connection.query('SELECT * from images', (err, rows, fields) => {
+      if (err) throw err;
+      console.log('The solution is: ', rows);
+      response.render("admin", {
+        title: "Мои контакты",
+        images: rows,
+        pages: rows1
+      });
+    });
+  });
+});
+
+app.post('/get_html', (request, response) => {
+  var params = request.body.name;
+  console.log(params);
+  connection.query('SELECT * from pages', (err1, rows1, fields1) => {
+    if (err1) throw err1;
+    connection.query('SELECT * from images', (err, rows, fields) => {
+      if (err) throw err;
+      console.log('The solution is: ', rows);
+      response.render(params, {
+        title: "Мои контакты",
+        images: rows,
+        pages: rows1
+      });
+    });
+  });
+});
+
+app.post('/edit', (request, response) => {
+  var params = request.body;
+  console.log(request.body);
+  connection.query('update images set '+params.name+'="'+params.val+'" where id = '+params.id, (err1, rows1, fields1) => {
+    if (err1) response.send(err1);
+    response.send(200);
+  });
+});
+
+app.post('/add', (request, response) => {
+  var params = request.body;
+  connection.query('insert into images set photo="3.jpg",photo_2="4.jpg",title="Красивая надпись",title_2="красивая подпись",description="Красивое описание надписи. Но конечно же длинное описание, так как это описание. Описание должно быть типо длинным. Ну примерно таким наверное",orginal=2;', (err1, rows1, fields1) => {
+    if (err1) throw err1;
+    response.send(200);
+  });
+});
+
+app.post('/delete', (request, response) => {
+  var params = request.body;
+  console.log(params);
+  connection.query('delete from images where id = '+params.id, (err1, rows1, fields1) => {
+    if (err1) throw err1;
+    response.send(200);
+  });
+});
+// app.post('/query')
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

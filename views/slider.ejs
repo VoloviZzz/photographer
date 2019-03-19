@@ -1,0 +1,25 @@
+<div data-editor="add" class="button">Добавить</div>
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <% for (var i = 0; i < images.length; i++) {
+      var image = images[i];
+    %>
+      <div class="swiper-slide swiper-slide-one">
+        <div class="swiper-image" data-swiper-parallax-y="<%= i%2==1 ? '0' : '50' %>%">
+          <div class="swiper-image-inner swiper-image-left" style="background-image: url('/img/<%= image.photo %>')">
+              <h1 style="display: flex;"><div style="height: 18px" data-id="<%= image.id %>" data-editor="delete" class="button">Удалить</div><input class="input" data-id="<%= image.id %>" data-name="title" type="text" value="<%= image.title %>"></h1>
+              <p><input class="input" data-name="title_2" data-id="<%= image.id %>" type="text" value="<%= image.title_2 %>"></p>
+          </div>
+        </div>
+        <div class="swiper-image" data-swiper-parallax-y="<%= i%2==1 ? '50' : '0' %>%">
+          <div class="swiper-image-inner swiper-image-right" style="background-image: url('/img/<%= image.photo_2 %>')">
+            <p class="paragraph">
+              <textarea class="input" data-name="description" data-id="<%= image.id %>" name="name" rows="6" cols="40"><%= image.description %></textarea>
+            </p>
+          </div>
+        </div>
+      </div>
+    <%}%>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
